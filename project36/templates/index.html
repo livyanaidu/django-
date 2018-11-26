@@ -1,0 +1,34 @@
+
+
+<table align="center" border="2">
+    <tr><th colspan="5">View Employee Details</th></tr>
+   <tr>
+       <th>IDNO</th>
+       <th>NAME</th>
+       <th>SALARY</th>
+   </tr>
+
+    {% for x in amp %}
+        <tr>
+        <td align="center">{{ x.idno }}</td>
+        <td align="center">{{ x.name }}</td>
+        <td align="center">{{ x.salary }}</td>
+
+
+        <form action="/delete{{ x.idno }}/" method="POST">
+        {% csrf_token %}
+
+            <td><input type="submit" value="Delete"></td>
+        </form>
+
+         <form action="/update{{ x.idno }}/" method="POST">
+        {% csrf_token %}
+
+              <td><input type="submit" value="update"></td>
+        </form>
+
+         </tr>
+     {% endfor %}
+
+
+</table>
